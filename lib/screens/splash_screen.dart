@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:hp_api_fetch/commons/blocs/books/books_bloc.dart';
+import 'package:hp_api_fetch/data/service/book_service.dart';
 import 'package:hp_api_fetch/screens/home/home_screen.dart';
+import 'package:hp_api_fetch/utils/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,18 +22,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     super.initState();
 
-    // Inicjalizacja kontrolera animacji
     _controller = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
     );
 
-    // Animacja zanikania (fade)
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeIn),
     );
 
-    // Animacja przesunięcia (slide)
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.5),
       end: Offset.zero,
@@ -37,7 +38,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
 
-    // Start animacji
     _controller.forward();
   }
 
@@ -55,7 +55,17 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void _navigateToHome() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+      MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          create: (context) => BooksBloc(
+            books: [],
+            bookService: BookService(),
+          )..add(
+              BooksFetchEvent(),
+            ),
+          child: const HomeScreen(),
+        ),
+      ),
     );
   }
 
@@ -78,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 child: SlideTransition(
                   position: _slideAnimation,
                   child: const Text(
-                    'Harry Potter\nFetch API App',
+                    Constants.appName,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 40,
@@ -99,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   shape: GFButtonShape.pills,
                   size: 56,
                   child: const Text(
-                    'Enter',
+                    Constants.enter,
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,

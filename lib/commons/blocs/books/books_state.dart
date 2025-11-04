@@ -1,6 +1,23 @@
 part of 'books_bloc.dart';
 
-@immutable
-sealed class BooksState {}
+sealed class BooksState {
+  const BooksState({this.books = const []});
+  final List<Book> books;
+}
 
-final class BooksInitial extends BooksState {}
+final class BooksInitial extends BooksState {
+  const BooksInitial();
+}
+
+final class BooksLoadInProgress extends BooksState {
+  const BooksLoadInProgress();
+}
+
+final class BooksLoadSuccess extends BooksState {
+  const BooksLoadSuccess(List<Book> books) : super(books: books);
+}
+
+final class BooksLoadFailure extends BooksState {
+  const BooksLoadFailure({required this.exception});
+  final Exception exception;
+}
