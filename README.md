@@ -1,16 +1,19 @@
-# hp_api_fetch
+# Harry Potter Books App
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+This is a test application built to showcase my skills in handling API requests within a Flutter environment. The app integrates with a public API to fetch and display books from the Harry Potter universe. While the focus is on functionality rather than aesthetics—due to the absence of a design reference—it effectively demonstrates API integration, data management, and user interaction.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Browse Books**: View a list of books from the Harry Potter series.
+- **Search Functionality**: Search through the book collection by title.
+- **Book Details**: Access detailed information about each book, including title, description, release date, and more.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Purpose
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project serves as a proof of concept to highlight my ability to work with APIs in Flutter. It prioritizes robust data handling over visual design, as no specific design guidelines were provided.
+
+---
+
+_Built with Flutter and powered by the Potter API._

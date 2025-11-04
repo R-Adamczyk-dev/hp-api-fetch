@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 Book characterFromJson(String str) => Book.fromJson(json.decode(str));
 
 String characterToJson(Book data) => json.encode(data.toJson());
 
-class Book {
+class Book extends Equatable {
   final int number;
   final String title;
   final String originalTitle;
@@ -14,7 +16,7 @@ class Book {
   final String cover;
   final int index;
 
-  Book({
+  const Book({
     required this.number,
     required this.title,
     required this.originalTitle,
@@ -67,4 +69,16 @@ class Book {
         "cover": cover,
         "index": index,
       };
+
+  @override
+  List<Object?> get props => [
+        number,
+        title,
+        originalTitle,
+        releaseDate,
+        description,
+        pages,
+        cover,
+        index,
+      ];
 }

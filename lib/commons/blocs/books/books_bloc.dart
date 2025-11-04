@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:hp_api_fetch/data/models/book.dart';
 import 'package:hp_api_fetch/data/service/book_service.dart';
 import 'package:hp_api_fetch/utils/constants.dart';
