@@ -20,7 +20,7 @@ void main() {
   });
 
   final mockBooks = [
-    Book(
+    const Book(
       number: 1,
       title: 'Harry Potter and the Philosopher\'s Stone',
       originalTitle: 'Harry Potter and the Philosopher\'s Stone',
@@ -30,7 +30,7 @@ void main() {
       cover: "httpsewfjkwjfw",
       index: 1,
     ),
-    Book(
+    const Book(
       number: 2,
       title: 'Harry Potter and the Chamber of Secrets',
       originalTitle: 'Harry Potter and the Chamber of Secrets',
